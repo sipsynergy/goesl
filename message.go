@@ -126,6 +126,8 @@ func (m *Message) Parse() error {
 		var decoded map[string]interface{}
 
 		if err := json.Unmarshal(m.Body, &decoded); err != nil {
+			fmt.Println("failing here")
+			fmt.Println(m)
 			return err
 		}
 

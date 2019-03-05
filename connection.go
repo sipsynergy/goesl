@@ -205,8 +205,9 @@ func (c *SocketConnection) Handle() {
 
 			if err != nil {
 				c.err <- err
-				done <- true
-				break
+				// done <- true
+				// break
+				fmt.Println(err)
 			}
 
 			c.m <- msg
@@ -216,11 +217,12 @@ func (c *SocketConnection) Handle() {
 	<-done
 
 	// Closing the connection now as there's nothing left to do ...
-	c.Close()
+	// c.Close()
 }
 
 // Close - Will close down net connection and return error if error happen
 func (c *SocketConnection) Close() error {
+	fmt.Println("killed conn")
 	if err := c.Conn.Close(); err != nil {
 		return err
 	}
